@@ -7,16 +7,12 @@
 
 #include "MZ_loadcell.h"
 #include "main.h"
-#include "cmsis_os.h"
-#include "MZ_sys_cmsis_os2.h"
 #include "MZ_error_handler.h"
 #include "MZ_timer.h"
 #include "MZ_print.h"
 #include "MZ_Mqtt_public.h"
-#include "MZ_type_converter.h"
 #include "MZ_Modem_public.h"
 #include "MZ_main.h"
-#include "MZ_uart.h"
 #include "stdlib.h"
 #include "stdio.h"
 #include "string.h"
@@ -30,7 +26,7 @@
 #define TIMER_ID_CLEAR							(0)						///< Clear the timer id
 /* Define some common use MACRO - END */
 
-static size_t loadcell_data_timer_id = TIMER_ID_CLEAR;		/*!< load cell timer id - Initialize it to 0 */
+static size_t loadcell_data_timer_id = TIMER_ID_CLEAR;					/*!< load cell timer id - Initialize it to 0 */
 
 #define LOADCELL_READ_TIME		 		(TIME_90SEC)						//< Set 90 seconds timer for read sensor data
 static char loadcell_read_timer_expire_flag = LOADCELL_READ_TIMER_EXPIRE_CLEAR;	/*!< Flag is created and cleared for sensor data read */
@@ -108,10 +104,10 @@ volatile int32_t measWeight = INIT_0;
 static int64_t preWeight = INIT_0;
 static int8_t dataTxReady = INIT_0;  		//transmit flag
 
-static char  loadCellWeight[LOADCELL_WEIGHT_SIZE] = {0};			/*!< Store load cell weight value after calculation from raw value and decimal place */
-static char  objectQty[OBJECT_QTY_SIZE] 		= {0};				/*!< Store object quantity value after calculation from raw value and decimal place */
-static char  referenceWeight[REFERENCE_WEIGHT_SIZE] = {0};			/*!< Store reference weight value after calculation from raw value and decimal place */
-static char  inventory_change[INVENTORY_CHANGE_SIZE] = {0};			/*!< Store inventory change value after calculation from raw value and decimal place */
+static char  loadCellWeight[LOADCELL_WEIGHT_SIZE] = {0};		/*!< Store load cell weight value after calculation from raw value and decimal place */
+static char  objectQty[OBJECT_QTY_SIZE] 		= {0};			/*!< Store object quantity value after calculation from raw value and decimal place */
+static char  referenceWeight[REFERENCE_WEIGHT_SIZE] = {0};		/*!< Store reference weight value after calculation from raw value and decimal place */
+static char  inventory_change[INVENTORY_CHANGE_SIZE] = {0};		/*!< Store inventory change value after calculation from raw value and decimal place */
 
 /* load cell Global Variables and Buffer - END */
 
